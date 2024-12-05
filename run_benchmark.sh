@@ -1,6 +1,7 @@
 # !/bin/bash
+chdir /workspaces/ubuntu/nrec_benchmark
 
-# Define the C# file.
+# Specify the C# file.
 CPP_FILE="benchmark.cpp"
 EXE_FILE="benchmark"
 

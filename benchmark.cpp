@@ -62,7 +62,7 @@ public:
 };
 
 void runBenchmark(const std::string& name, std::function<void()> func) {
-    constexpr int NUM_RUNS = 100;
+    constexpr int NUM_RUNS = 10;
     std::vector<double> times;
     times.reserve(NUM_RUNS);
 
