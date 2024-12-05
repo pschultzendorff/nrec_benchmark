@@ -1,0 +1,18 @@
+FROM ubuntu:24.04
+WORKDIR /workspaces/ubuntu
+
+# Install dependencies.
+RUN apt-get update && apt-get -y install cron
+
+# Get the benchmarking code.
+RUN git clone https://github.com/pschultzendorff/nrec_benchmark
+
+# Setup the cron job.
+WORKDIR /workspaces/ubuntu/nrec_benchmark
+COPY /cronjob /etc/cron.d/cronjob
+RUN chmod 0644 /etc/cron.d/cronjob
+RUN crontab /etc/cron.d/cronjob
+
+# Change the user to a non-root user.
+RUN useradd app
+USER app
