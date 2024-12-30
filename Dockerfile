@@ -9,6 +9,7 @@ RUN apt-get update && apt-get -y install cron && apt-get -y install g++ && apt-g
 COPY cronjob_benchmark cronjob
 RUN chmod +x cronjob
 RUN crontab cronjob
+RUN rm cronjob
 
-# Restart cron to ensure the job is running.
-RUN /sbin/service cron start
+# Start cron service.
+CMD cron -f
