@@ -33,13 +33,13 @@ def plot_performance() -> None:
     fig, axes = plt.subplots(3, 1, figsize=(10, 6))
 
     for benchmark, ax in zip(df["benchmark"].unique(), axes):
-        sns.lineplot(x="timestamp", y="minimum time", data=df[df["benchmark"] == benchmark], ax=ax)
-        sns.lineplot(x="timestamp", y="maximum time", data=df[df["benchmark"] == benchmark], ax=ax)
-        sns.lineplot(x="timestamp", y="average time", data=df[df["benchmark"] == benchmark], ax=ax)
+        sns.lineplot(x="timestamp", y="minimum time", data=df[df["benchmark"] == benchmark], ax=ax, label="Minimum Time")
+        sns.lineplot(x="timestamp", y="maximum time", data=df[df["benchmark"] == benchmark], ax=ax, label="Maximum Time")
+        sns.lineplot(x="timestamp", y="average time", data=df[df["benchmark"] == benchmark], ax=ax, label="Average Time")
         ax.set_title(f"{benchmark} - Performance Over Time")
         ax.set_xlabel("Timestamp (s)")
         ax.set_ylabel("Runtime (ms)")
-        fig.tight_layout()
+    fig.tight_layout()
     plt.savefig("performance.png")
     plt.show()
 
